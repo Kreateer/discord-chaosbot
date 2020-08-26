@@ -2,5 +2,5 @@ token.txt
 requirements.txt
 reddit_tokens.txt
 BotLogs.txt
-pythonProject/.idea
-pythonProject/venv
+pythonProject\.idea
+pythonProject\venv
