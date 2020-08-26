@@ -4,3 +4,4 @@ reddit_tokens.txt
 BotLogs.txt
 pythonProject\.idea
 pythonProject\venv
+*.xml
