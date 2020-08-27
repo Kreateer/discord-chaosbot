@@ -1,5 +1,7 @@
 # ChaosBot
 
+*A simple Discord Bot project written in Python 3.7*
+
 ## Introduction
 
 **This is a personal (hobby) project as part of my quest to broaden my knowledge of Python and make some friends happy ^^**
