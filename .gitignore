@@ -1,0 +1,7 @@
+token.txt
+requirements.txt
+BotLogs.txt
+reddit_tokens.txt
+pythonProject\.idea
+pythonProject\venv
+*.xml
