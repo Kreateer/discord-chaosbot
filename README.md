@@ -3,6 +3,7 @@
 **This is a personal (hobby) project as part of my quest to broaden my knowledge of Python and make some friends happy ^^**
 
 The bot is meant to be a fun chat bot that serves little purpose but to keep you entertained :)
+
 Therefore, my *current* goals for this project are as follows:
 
 * Allow users to search for images from Reddit and Google Images
