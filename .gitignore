@@ -1,5 +1,6 @@
 token.txt
 requirements.txt
+<<<<<<< HEAD
 reddit_tokens.txt
 BotLogs.txt
 pythonProject\.idea
@@ -8,3 +9,14 @@ Test_Logs.txt
 test_token.txt
 bot_test.py
 *.xml
+=======
+BotLogs.txt
+reddit_tokens.txt
+pythonProject\.idea
+pythonProject\venv
+*.xml
+*.iml
+bot_test.py
+test_token.txt
+Test_Logs.txt
+>>>>>>> test

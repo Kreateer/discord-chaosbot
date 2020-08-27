@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+# from discord.utils import get
 import praw
 import random
 import datetime as dt
@@ -84,6 +85,11 @@ async def on_ready():
         f.write('\n')
 
 
+async def on_message(self, message):
+    if message.author.id == self.user.id:
+        return
+
+
 class Slapper(commands.Converter):
     async def convert(self, ctx, argument):
         to_slap = random.choice(ctx.guild.members)
@@ -98,8 +104,9 @@ async def slap(ctx, *, reason: Slapper):
 @bot.command()
 async def info(ctx):
     run_time = dt.datetime.now()
-    await ctx.send("A bot made by 'Kreateer#9930' to bring a little Chaos to your server! :smirk: "
-                   "\n*Written in Python 3.7 using 'discord.py'*")
+    await ctx.send("A bot made by 'Kreateer#9930' to bring a little Chaos to your server! :smirk:\n "
+                   "GitHub: https://github.com/Kreateer/discord-chaosbot\n"
+                   "*Written in Python 3.7 using 'discord.py'*")
     console_print("'info'", run_time)
 
 
@@ -111,7 +118,7 @@ async def ping(ctx):
 
 
 @bot.command()
-async def moist(ctx):
+async def pussy(ctx):
     run_time = dt.datetime.now()
     lewd_images = reddit.subreddit('pussy').hot()
     random_post = random.randint(1, 10)
@@ -120,8 +127,40 @@ async def moist(ctx):
         submission = next(x for x in lewd_images if not x.stickied)
 
     await ctx.send(f"{submission.url}")
-    await ctx.send("Have some moist pussy ( ͡° ͜ʖ ͡°)" + ctx.message.author.mention)
+    embed.set_author(name=f"{submission.title}")
+    embed.add_field(name=f'Posted by: {submission.author}', value=f"{submission.permalink}", inline=False)
+    await ctx.send("Have some wet thot pussy ( ͡° ͜ʖ ͡°)" + ctx.message.author.mention)
+    console_print("'pussy'", run_time)
+
+
+@bot.command()
+async def moist(ctx):
+    run_time = dt.datetime.now()
+    lewd_soaked = reddit.subreddit('SoakedHentai+HentaiPussyPics').hot()
+    random_post = random.randint(1, 100)
+    embed = discord.Embed(color=discord.Color.red())
+    submission = ...
+    for i in range(0, random_post):
+        submission = next(x for x in lewd_soaked if not x.stickied)
+
+    await ctx.send(f"{submission.url}")
+    embed.set_author(name=f"{submission.title}")
+    embed.add_field(name=f'Posted by: {submission.author}', value=f"{submission.permalink}", inline=False)
+    await ctx.send(embed=embed)
+    # await ctx.send(f"{submission.title}")
+    # await ctx.send("Have some moist anime girls ( ͡° ͜ʖ ͡°)" + ctx.message.author.mention)
     console_print("'moist'", run_time)
+
+
+@bot.command(pass_context=True)
+# @commands.has_role("Admin")
+async def addrole(ctx, user: discord.Member, role: discord.Role):
+    run_time = dt.datetime.now()
+    member = ctx.message.author
+    # role = get(member.server.roles, name="Test")
+    await user.add_roles(member, role)
+    await ctx.send(f"{ctx.author.name} has been given the the role {role.name}")
+    console_print("'addrole'", run_time)
 
 
 @bot.command(pass_context=True)
@@ -136,6 +175,18 @@ async def help(ctx):
     embed.add_field(name='.info', value='Provides some info. about the bot', inline=False)
     await msg_auth.send(embed=embed)
     console_print("'help'", run_time)
+
+
+@bot.command(pass_context=True, name="help nsfw")
+@commands.has_role("NSFW")
+async def helpnsfw(ctx):
+    run_time = dt.datetime.now()
+    msg_auth = ctx.message.author
+    embed = discord.Embed(color=discord.Color.red())
+    embed.set_author(name='NSFW Help')
+    embed.add_field(name='.moist', value="Fetches NSFW images from the r/pussy subreddit", inline=False)
+    await msg_auth.send(embed=embed)
+    console_print("'help nsfw'", run_time)
 
 
 bot.run(token)
