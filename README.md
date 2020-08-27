@@ -23,5 +23,5 @@ As of **2020/28/08**, this bot can:
 
 This bot is written in Python 3.7 and is currently using the following packages:
 
-* [`discord.py`](https://discordpy.readthedocs.io/en/latest/index.html "Discord.py API Documentation")
-* [`praw`](https://praw.readthedocs.io/en/latest/index.html "PRAW Documentation")
+* [discord.py](https://discordpy.readthedocs.io/en/latest/index.html "Discord.py API Documentation")
+* [praw](https://praw.readthedocs.io/en/latest/index.html "PRAW Documentation")
