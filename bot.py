@@ -85,6 +85,11 @@ async def on_ready():
         f.write('\n')
 
 
+async def on_message(self, message):
+    if message.author.id == self.user.id:
+        return
+
+
 class Slapper(commands.Converter):
     async def convert(self, ctx, argument):
         to_slap = random.choice(ctx.guild.members)
@@ -113,7 +118,7 @@ async def ping(ctx):
 
 
 @bot.command()
-async def moist(ctx):
+async def pussy(ctx):
     run_time = dt.datetime.now()
     lewd_images = reddit.subreddit('pussy').hot()
     random_post = random.randint(1, 10)
@@ -122,7 +127,28 @@ async def moist(ctx):
         submission = next(x for x in lewd_images if not x.stickied)
 
     await ctx.send(f"{submission.url}")
-    await ctx.send("Have some moist pussy ( ͡° ͜ʖ ͡°)" + ctx.message.author.mention)
+    embed.set_author(name=f"{submission.title}")
+    embed.add_field(name=f'Posted by: {submission.author}', value=f"{submission.permalink}", inline=False)
+    await ctx.send("Have some wet thot pussy ( ͡° ͜ʖ ͡°)" + ctx.message.author.mention)
+    console_print("'pussy'", run_time)
+
+
+@bot.command()
+async def moist(ctx):
+    run_time = dt.datetime.now()
+    lewd_soaked = reddit.subreddit('SoakedHentai+HentaiPussyPics').hot()
+    random_post = random.randint(1, 100)
+    embed = discord.Embed(color=discord.Color.red())
+    submission = ...
+    for i in range(0, random_post):
+        submission = next(x for x in lewd_soaked if not x.stickied)
+
+    await ctx.send(f"{submission.url}")
+    embed.set_author(name=f"{submission.title}")
+    embed.add_field(name=f'Posted by: {submission.author}', value=f"{submission.permalink}", inline=False)
+    await ctx.send(embed=embed)
+    # await ctx.send(f"{submission.title}")
+    # await ctx.send("Have some moist anime girls ( ͡° ͜ʖ ͡°)" + ctx.message.author.mention)
     console_print("'moist'", run_time)
 
 
