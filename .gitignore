@@ -5,6 +5,7 @@ reddit_tokens.txt
 pythonProject\.idea
 pythonProject\venv
 *.xml
+*.iml
 bot_test.py
 test_token.txt
 Test_Logs.txt
