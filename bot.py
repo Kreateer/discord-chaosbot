@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-# from discord.utils import get
+from discord.utils import get
 import praw
 import random
 import datetime as dt
