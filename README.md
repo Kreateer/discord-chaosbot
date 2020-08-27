@@ -1,6 +1,6 @@
 # ChaosBot
 
-##Introduction
+## Introduction
 
 **This is a personal (hobby) project as part of my quest to broaden my knowledge of Python and make some friends happy ^^**
 
@@ -12,7 +12,7 @@ Therefore, my *current* goals for this project are as follows:
 * Allow users to play themed games with the bot based on the Warhammer 40k fantasy universe
 * Allow users to search for Warhammer 40k lore
 
-##Functionalities
+## Functionalities
 
 *NOTE: This list will be updated as new features are developed*
 
@@ -22,7 +22,7 @@ As of **2020/28/08**, this bot can:
 * Let users self-assign a role
 * Print out a list of general and role-specific commands
 
-##Packages
+## Packages
 
 This bot is written in Python 3.7 and is currently using the following packages:
 
