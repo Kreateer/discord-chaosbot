@@ -9,3 +9,5 @@ pythonProject\venv
 bot_test.py
 test_token.txt
 Test_Logs.txt
+*.pyc
+nsfw_test.py
