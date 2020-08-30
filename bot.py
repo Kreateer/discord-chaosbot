@@ -1,17 +1,18 @@
 import discord
 from discord.ext import commands
-# from discord.utils import get
+from discord.utils import get
 import praw
 import random
 import datetime as dt
 
+# Assign variables to hold client and bot references
 client = discord.Client()
 bot = commands.Bot(command_prefix='.')
 
 startupTime = dt.datetime.now()
 bot.remove_command('help')
 
-
+# This function reads the bot token from file
 def read_token():
     with open('token.txt', 'r') as f:
         lines = f.readlines()
@@ -20,7 +21,7 @@ def read_token():
 
 token = read_token()
 
-
+# Functions made to read the reddit app id and secret from file
 def reddit_id():
     with open('reddit_tokens.txt', 'r') as f:
         lines = f.readlines()
@@ -44,7 +45,19 @@ with open('BotLogs.txt', 'a') as g:
     g.write(str(dt.datetime.now()))
     g.write('\n')
 
+# This is a list that holds all the cogs to be loaded.
+cog_load = ['cogs.nsfw', 'cogs.roles']
 
+# This loads the extensions (or cogs) listed above and creates a custom exception on error
+if __name__ == '__main__':
+    for cog in cog_load:
+        try:
+            bot.load_extension(cog)
+        except Exception as e:
+            print(f'Failed to load extenstion {cog_load}.', file=sys.stderr)
+            traceback.print_exc()
+
+# When called, this function writes the command and time when the command was used to file.
 def console_print(commandname, commandtime):
     time = commandtime
     run_time = dt.datetime.now() - time
@@ -66,7 +79,7 @@ def console_print(commandname, commandtime):
         f.write(' has been run\n')
         f.write('*CHAOS BOT*\n')
 
-
+# This event sets the rich presence for the bot, signals ready status to console and writes to file.
 @bot.event
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name='Creating Chaos | .help'))  # Set rich presence on start
@@ -84,23 +97,12 @@ async def on_ready():
         f.write(str(loading_time))
         f.write('\n')
 
-
+# This makes sure that the bot doesn't reply to itself
 async def on_message(self, message):
     if message.author.id == self.user.id:
         return
 
-
-class Slapper(commands.Converter):
-    async def convert(self, ctx, argument):
-        to_slap = random.choice(ctx.guild.members)
-        return '{0.author} slapped {1} because *{2}*'.format(ctx, to_slap, argument)
-
-
-@bot.command()
-async def slap(ctx, *, reason: Slapper):
-    await ctx.send(reason)
-
-
+# Basic command that prints short info. about the bot and author.
 @bot.command()
 async def info(ctx):
     run_time = dt.datetime.now()
@@ -109,7 +111,7 @@ async def info(ctx):
                    "*Written in Python 3.7 using 'discord.py'*")
     console_print("'info'", run_time)
 
-
+# Basic command that tests if the bot has connected to Discord.
 @bot.command()
 async def ping(ctx):
     run_time = dt.datetime.now()
@@ -117,52 +119,8 @@ async def ping(ctx):
     console_print("'ping'", run_time)
 
 
-@bot.command()
-async def pussy(ctx):
-    run_time = dt.datetime.now()
-    lewd_images = reddit.subreddit('pussy').hot()
-    random_post = random.randint(1, 10)
-    submission = ...
-    for i in range(0, random_post):
-        submission = next(x for x in lewd_images if not x.stickied)
 
-    await ctx.send(f"{submission.url}")
-    embed.set_author(name=f"{submission.title}")
-    embed.add_field(name=f'Posted by: {submission.author}', value=f"{submission.permalink}", inline=False)
-    await ctx.send("Have some wet thot pussy ( ͡° ͜ʖ ͡°)" + ctx.message.author.mention)
-    console_print("'pussy'", run_time)
-
-
-@bot.command()
-async def moist(ctx):
-    run_time = dt.datetime.now()
-    lewd_soaked = reddit.subreddit('SoakedHentai+HentaiPussyPics').hot()
-    random_post = random.randint(1, 100)
-    embed = discord.Embed(color=discord.Color.red())
-    submission = ...
-    for i in range(0, random_post):
-        submission = next(x for x in lewd_soaked if not x.stickied)
-
-    await ctx.send(f"{submission.url}")
-    embed.set_author(name=f"{submission.title}")
-    embed.add_field(name=f'Posted by: {submission.author}', value=f"{submission.permalink}", inline=False)
-    await ctx.send(embed=embed)
-    # await ctx.send(f"{submission.title}")
-    # await ctx.send("Have some moist anime girls ( ͡° ͜ʖ ͡°)" + ctx.message.author.mention)
-    console_print("'moist'", run_time)
-
-
-@bot.command(pass_context=True)
-# @commands.has_role("Admin")
-async def addrole(ctx, user: discord.Member, role: discord.Role):
-    run_time = dt.datetime.now()
-    member = ctx.message.author
-    # role = get(member.server.roles, name="Test")
-    await user.add_roles(member, role)
-    await ctx.send(f"{ctx.author.name} has been given the the role {role.name}")
-    console_print("'addrole'", run_time)
-
-
+# Basic help command that replaces the default, built-in one. It sends the list of commands to the user's DM.
 @bot.command(pass_context=True)
 async def help(ctx):
     run_time = dt.datetime.now()
@@ -177,16 +135,4 @@ async def help(ctx):
     console_print("'help'", run_time)
 
 
-@bot.command(pass_context=True, name="help nsfw")
-@commands.has_role("NSFW")
-async def helpnsfw(ctx):
-    run_time = dt.datetime.now()
-    msg_auth = ctx.message.author
-    embed = discord.Embed(color=discord.Color.red())
-    embed.set_author(name='NSFW Help')
-    embed.add_field(name='.moist', value="Fetches NSFW images from the r/pussy subreddit", inline=False)
-    await msg_auth.send(embed=embed)
-    console_print("'help nsfw'", run_time)
-
-
-bot.run(token)
+bot.run(token, bot=True, reconnect=True)
