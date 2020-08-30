@@ -12,6 +12,7 @@ bot = commands.Bot(command_prefix='.')
 startupTime = dt.datetime.now()
 bot.remove_command('help')
 
+
 # This function reads the bot token from file
 def read_token():
     with open('token.txt', 'r') as f:
@@ -20,6 +21,7 @@ def read_token():
 
 
 token = read_token()
+
 
 # Functions made to read the reddit app id and secret from file
 def reddit_id():
@@ -57,6 +59,7 @@ if __name__ == '__main__':
             print(f'Failed to load extenstion {cog_load}.', file=sys.stderr)
             traceback.print_exc()
 
+
 # When called, this function writes the command and time when the command was used to file.
 def console_print(commandname, commandtime):
     time = commandtime
@@ -79,6 +82,7 @@ def console_print(commandname, commandtime):
         f.write(' has been run\n')
         f.write('*CHAOS BOT*\n')
 
+
 # This event sets the rich presence for the bot, signals ready status to console and writes to file.
 @bot.event
 async def on_ready():
@@ -97,10 +101,12 @@ async def on_ready():
         f.write(str(loading_time))
         f.write('\n')
 
+
 # This makes sure that the bot doesn't reply to itself
 async def on_message(self, message):
     if message.author.id == self.user.id:
         return
+
 
 # Basic command that prints short info. about the bot and author.
 @bot.command()
@@ -111,13 +117,13 @@ async def info(ctx):
                    "*Written in Python 3.7 using 'discord.py'*")
     console_print("'info'", run_time)
 
+
 # Basic command that tests if the bot has connected to Discord.
 @bot.command()
 async def ping(ctx):
     run_time = dt.datetime.now()
     await ctx.send('pong')
     console_print("'ping'", run_time)
-
 
 
 # Basic help command that replaces the default, built-in one. It sends the list of commands to the user's DM.
