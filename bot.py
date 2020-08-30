@@ -4,6 +4,7 @@ from discord.utils import get
 import praw
 import random
 import datetime as dt
+import sys, traceback
 
 # Assign variables to hold client and bot references
 client = discord.Client()
@@ -36,11 +37,11 @@ def reddit_secret():
         return lines[1].strip()
 
 
-red_id = reddit_id()
-red_scrt = reddit_secret()
-
-reddit = praw.Reddit(client_id=red_id, client_secret=red_scrt,
-                     user_agent='A fun chat bot for Discord made in Python v3.7 (by u/TrueGentlemanLudwig)')
+# red_id = reddit_id()
+# red_scrt = reddit_secret()
+#
+# reddit = praw.Reddit(client_id=red_id, client_secret=red_scrt,
+#                      user_agent='A fun chat bot for Discord made in Python v3.7 (by u/TrueGentlemanLudwig)')
 
 with open('BotLogs.txt', 'a') as g:
     g.write('\n*CHAOS BOT IS READY TO WREAK HAVOC*\n')

@@ -20,3 +20,5 @@ bot_test.py
 test_token.txt
 Test_Logs.txt
 >>>>>>> test
+*.pyc
+nsfw_test.py

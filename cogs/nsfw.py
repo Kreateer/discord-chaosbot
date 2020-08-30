@@ -1,5 +1,17 @@
 import discord
 from discord.ext import commands
+from discord.utils import get
+import praw
+import random
+import datetime as dt
+from bot import console_print
+from bot import reddit_id, reddit_secret
+
+red_id = reddit_id()
+red_scrt = reddit_secret()
+
+reddit = praw.Reddit(client_id=red_id, client_secret=red_scrt,
+                     user_agent='A fun chat bot for Discord made in Python v3.7 (by u/TrueGentlemanLudwig)')
 
 
 class NsfwCog(commands.Cog, name="NSFW Commands"):
@@ -12,6 +24,7 @@ class NsfwCog(commands.Cog, name="NSFW Commands"):
         run_time = dt.datetime.now()
         lewd_images = reddit.subreddit('pussy').hot()
         random_post = random.randint(1, 10)
+        cs_prt = console_print
         submission = ...
         for i in range(0, random_post):
             submission = next(x for x in lewd_images if not x.stickied)
@@ -20,7 +33,7 @@ class NsfwCog(commands.Cog, name="NSFW Commands"):
         embed.set_author(name=f"{submission.title}")
         embed.add_field(name=f'Posted by: {submission.author}', value=f"{submission.permalink}", inline=False)
         await ctx.send("Have some wet thot pussy ( ͡° ͜ʖ ͡°)" + ctx.message.author.mention)
-        console_print("'pussy'", run_time)
+        cs_prt("'pussy'", run_time)
 
     @commands.command()
     @commands.guild_only()
@@ -53,7 +66,6 @@ class NsfwCog(commands.Cog, name="NSFW Commands"):
         embed.add_field(name='.moist', value="Fetches NSFW images from the r/pussy subreddit", inline=False)
         await msg_auth.send(embed=embed)
         console_print("'help nsfw'", run_time)
-
 
 
 def setup(bot):
