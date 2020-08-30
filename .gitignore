@@ -1,5 +1,15 @@
 token.txt
 requirements.txt
+<<<<<<< HEAD
+reddit_tokens.txt
+BotLogs.txt
+pythonProject\.idea
+pythonProject\venv
+Test_Logs.txt
+test_token.txt
+bot_test.py
+*.xml
+=======
 BotLogs.txt
 reddit_tokens.txt
 pythonProject\.idea
@@ -9,5 +19,6 @@ pythonProject\venv
 bot_test.py
 test_token.txt
 Test_Logs.txt
+>>>>>>> test
 *.pyc
 nsfw_test.py

@@ -1,5 +1,10 @@
 import discord
 from discord.ext import commands
+from discord.utils import get
+import praw
+import random
+import datetime as dt
+from bot import console_print
 
 
 class RolesCog(commands.Cog, name="Role Commands"):
@@ -27,7 +32,6 @@ class RolesCog(commands.Cog, name="Role Commands"):
     #     #     await ctx.send("Role not found! Make sure the role exists!")
     #     console_print("'addrole'", run_time)
 
-
     # Command that lets the user assign themselves a role
     @commands.cooldown(1, 10, commands.BucketType.user)
     @commands.command(pass_context=True)
@@ -36,10 +40,11 @@ class RolesCog(commands.Cog, name="Role Commands"):
     async def addrole(self, ctx, user: discord.Member, role: discord.Role):
         run_time = dt.datetime.now()
         member = ctx.message.author
+        cs_prt = console_print
         # role = get(member.server.roles, name="Test")
         await user.add_roles(member, role)
         await ctx.send(f"{ctx.author.name} has been given the the role {role.name}")
-        console_print("'addrole'", run_time)
+        cs_prt("'addrole'", run_time)
 
 
 def setup(bot):
