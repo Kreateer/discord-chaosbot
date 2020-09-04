@@ -1,9 +1,11 @@
-## Welcome!
+# ChaosBot - A Discord Bot For Warhammer 40k Fans!
+
+## About This Website
 
 This website's function is to essentially be an organized and fancier version
 of a wiki for ChaosBot.
 It will also allow me to experiment and fiddle around with GitHub Pages, so
-it works out for everyone. :D
+it works out for everyone.
 
 If you found this page and are here just to browse out of boredom, I suggest
 you scroll through Reddit instead as you might find more interesting
@@ -12,14 +14,14 @@ stuff there.
 On the other hand, if you wish to make use of my bot, you're welcome to clone
 the repository and edit whatever you need to make your own bot.
 
-### About
+## About ChaosBot
 
-This is a personal (hobby) project as part of my quest to broaden my knowledge
-of Python and make some friends happy. ^^
+The bot is meant to be a fun chat bot that allows users to search for and
+provide Warhammer 40k content.
+Right now it serves little purpose but to keep you entertained and is
+currently being used in a few Discord servers (guilds) for testing.
 
-The bot is meant to be a fun chat bot that serves little purpose but to
-keep you entertained and is currently being used in a few Discord servers
-(guilds) for testing.
+## Project Goals
 
 My goals for this project are fairly simple:
 
@@ -29,7 +31,7 @@ My goals for this project are fairly simple:
 * Allow users to search for Warhammer 40k lore
 * with more to come...
 
-### Functionalities
+## Functionalities
 
 *NOTE: This list will be updated as new features are developed*
 
