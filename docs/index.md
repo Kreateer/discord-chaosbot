@@ -1,37 +1,47 @@
-## Welcome to GitHub Pages
+## About This Website
 
-You can use the [editor on GitHub](https://github.com/Kreateer/discord-chaosbot/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+This website's function is to essentially be an organized and fancier version
+of a wiki for ChaosBot.
+It will also allow me to experiment and fiddle around with GitHub Pages, so
+it works out for everyone.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+If you found this page and are here just to browse out of boredom, I suggest
+you scroll through Reddit instead as you might find more interesting
+stuff there.
 
-### Markdown
+On the other hand, if you wish to make use of my bot, you're welcome to clone
+the repository and edit whatever you need to make your own bot.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## About ChaosBot
 
-```markdown
-Syntax highlighted code block
+The bot is meant to be a fun chat bot that allows users to search for and
+provide Warhammer 40k content.
+Right now it serves little purpose but to keep you entertained and is
+currently being used in a few Discord servers (guilds) for testing.
 
-# Header 1
-## Header 2
-### Header 3
+## Project Goals
 
-- Bulleted
-- List
+My goals for this project are fairly simple:
 
-1. Numbered
-2. List
+* Allow users to search for images from Reddit and Google Images
+* Allow users to play themed games with the bot based on the Warhammer
+40k fantasy universe
+* Allow users to search for Warhammer 40k lore
+* with more to come...
 
-**Bold** and _Italic_ and `Code` text
+## Functionalities
 
-[Link](url) and ![Image](src)
-```
+*NOTE: This list will be updated as new features are developed*
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+As of **2020/28/08**, this bot can:
 
-### Jekyll Themes
+* Pull and embed images from Reddit
+* Let users self-assign a role
+* Print out a list of general and role-specific commands
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Kreateer/discord-chaosbot/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Packages
 
-### Support or Contact
+This bot is written in Python 3.7 and is currently using the following packages:
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+* [discord.py](https://discordpy.readthedocs.io/en/latest/index.html "Discord.py API Documentation")
+* [praw](https://praw.readthedocs.io/en/latest/index.html "PRAW Documentation")
