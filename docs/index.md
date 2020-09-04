@@ -1,7 +1,7 @@
 <html>
   <body>
-      <center><h1 style="color:DarkRed;"><b>ChaosBot</b></h1>
-      <h2 style="color:White;"><i>A Discord Bot For Warhammer 40k Fans!</i></h2></center>
+      <center><h1><b>ChaosBot</b></h1>
+      <h2><i>A Discord Bot For Warhammer 40k Fans!</i></h2></center>
   </body>
 </html>
 
