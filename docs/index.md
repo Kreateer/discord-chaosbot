@@ -1,7 +1,9 @@
 <html>
   <body>
+    <div class="Headings">
       <center><h1><b>ChaosBot</b></h1>
-      <h2><i>A Discord Bot For Warhammer 40k Fans!</i></h2><br></center>
+      <h2><i>A Discord Bot For Warhammer 40k Fans!</i></h2></center>
+    </div>
   </body>
 </html>
 
