@@ -1,5 +1,9 @@
-# ChaosBot
-# *A Discord Bot For Warhammer 40k Fans!*
+<html>
+  <body>
+      <h1 style ="text-align:center">ChaosBot</h1>
+      <h2 style ="text-align:center">A Discord Bot For Warhammer 40k Fans!</h2>
+  </body>
+</html>
 
 ## About This Website
 
