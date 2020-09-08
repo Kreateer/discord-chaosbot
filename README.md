@@ -1,4 +1,5 @@
 # ChaosBot
+https://travis-ci.com/Kreateer/discord-chaosbot.svg?branch=master
 
 **This is a personal (hobby) project as part of my quest to broaden my knowledge of Python and make some friends happy ^^**
 
