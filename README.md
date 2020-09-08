@@ -1,5 +1,5 @@
 # ChaosBot
-https://travis-ci.com/Kreateer/discord-chaosbot.svg?branch=master
+[![Build Status](https://travis-ci.com/Kreateer/discord-chaosbot.svg?branch=master)](https://travis-ci.com/Kreateer/discord-chaosbot)
 
 **This is a personal (hobby) project as part of my quest to broaden my knowledge of Python and make some friends happy ^^**
 
