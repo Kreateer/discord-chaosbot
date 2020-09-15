@@ -5,18 +5,21 @@ import praw
 import random
 import datetime as dt
 from bot import console_print
-from bot import reddit_id, reddit_secret
+from bot import ReadReddit
 
-red_id = reddit_id()
-red_scrt = reddit_secret()
+reddit_class = ReadReddit
 
-reddit = praw.Reddit(client_id=red_id, client_secret=red_scrt,
-                     user_agent='A fun chat bot for Discord made in Python v3.7 (by u/TrueGentlemanLudwig)')
+credentials = praw.Reddit(client_id=reddit_class.read_id(), client_secret=reddit_class.read_secret(),
+                          user_agent='A fun chat bot for Discord made in Python v3.7 (by u/TrueGentlemanLudwig)')
 
 
 class NsfwCog(commands.Cog, name="NSFW Commands"):
     def __init__(self, bot):
         self.bot = bot
+
+    @commands.Cog.listener()
+    async def on_ready(self):
+        print("NSFW cog has been loaded!")
 
     @commands.command()
     @commands.guild_only()
@@ -55,15 +58,16 @@ class NsfwCog(commands.Cog, name="NSFW Commands"):
         console_print("'moist'", run_time)
 
     # Basic help command that lists the NSFW commands to the user's DM if the user has the NSFW role.
-    @commands.command(pass_context=True, name="help nsfw")
+    @commands.command(pass_context=True)
     @commands.guild_only()
     @commands.has_role("NSFW")
-    async def helpnsfw(self, ctx):
+    async def nsfw(self, ctx):
         run_time = dt.datetime.now()
         msg_auth = ctx.message.author
         embed = discord.Embed(color=discord.Color.red())
         embed.set_author(name='NSFW Help')
-        embed.add_field(name='.moist', value="Fetches NSFW images from the r/pussy subreddit", inline=False)
+        embed.add_field(name='.moist', value="Fetches NSFW images from various hentai subreddits", inline=False)
+        embed.add_field(name='.pussy', value="Fetches NSFW images from r/pussy subreddit", inline=False)
         await msg_auth.send(embed=embed)
         console_print("'help nsfw'", run_time)
 

@@ -5,10 +5,15 @@ import praw
 import random
 import datetime as dt
 import sys, traceback
+import os
+from pathlib import Path
 
 # Assign variables to hold client and bot references
 client = discord.Client()
 bot = commands.Bot(command_prefix='.')
+
+cwd = Path(__file__).parents[0]
+cwd = str(cwd)
 
 startupTime = dt.datetime.now()
 bot.remove_command('help')
@@ -24,24 +29,23 @@ def read_token():
 token = read_token()
 
 
+class ReadReddit:
+    def __init__(self):
+        self.text_file = 'reddit_tokens.txt'
+
 # Functions made to read the reddit app id and secret from file
-def reddit_id():
-    with open('reddit_tokens.txt', 'r') as f:
-        lines = f.readlines()
-        return lines[0].strip()
+    def read_id(self):
+        file = self.text_file
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            return lines[0].strip()
 
+    def read_secret(self):
+        file = self.text_file
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            return lines[1].strip()
 
-def reddit_secret():
-    with open('reddit_tokens.txt', 'r') as f:
-        lines = f.readlines()
-        return lines[1].strip()
-
-
-# red_id = reddit_id()
-# red_scrt = reddit_secret()
-#
-# reddit = praw.Reddit(client_id=red_id, client_secret=red_scrt,
-#                      user_agent='A fun chat bot for Discord made in Python v3.7 (by u/TrueGentlemanLudwig)')
 
 with open('BotLogs.txt', 'a') as g:
     g.write('\n*CHAOS BOT IS READY TO WREAK HAVOC*\n')
@@ -49,16 +53,14 @@ with open('BotLogs.txt', 'a') as g:
     g.write('\n')
 
 # This is a list that holds all the cogs to be loaded.
-cog_load = ['cogs.nsfw', 'cogs.roles']
+cog_load = ['cogs.nsfw',
+            'cogs.roles']
 
 # This loads the extensions (or cogs) listed above and creates a custom exception on error
 if __name__ == '__main__':
-    for cog in cog_load:
-        try:
-            bot.load_extension(cog)
-        except Exception as e:
-            print(f'Failed to load extenstion {cog_load}.', file=sys.stderr)
-            traceback.print_exc()
+    for cog_file in os.listdir(cwd+"/cogs"):
+        if cog_file.endswith(".py") and not cog_file.startswith("_"):
+            bot.load_extension(f"cogs.{cog_file[:-3]}")
 
 
 # When called, this function writes the command and time when the command was used to file.
